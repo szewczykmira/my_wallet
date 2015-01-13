@@ -9,5 +9,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true
 
   has_many :expenses
+  has_many :debts, :class_name => 'Expense', :foreign_key => :debtor_id
+  has_many :credits, :class_name => 'Expense', :foreign_key => :creditor_id
 
 end
