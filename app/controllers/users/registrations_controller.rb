@@ -44,9 +44,9 @@ before_filter :configure_sign_up_params
   end
 
   # You can put the params you want to permit in the empty array.
-  # def configure_account_update_params
-  #   devise_parameter_sanitizer.for(:account_update) << :attribute
-  # end
+  def configure_account_update_params
+    devise_parameter_sanitizer.for(:account_update).push(:username, :email, :password, :password_confirmation, :remember_me) 
+  end
 
   # The path used after sign up.
   # def after_sign_up_path_for(resource)
