@@ -1,0 +1,2 @@
+module MyWalletHelper
+end
