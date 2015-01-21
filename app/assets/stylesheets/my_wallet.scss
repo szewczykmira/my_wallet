@@ -40,11 +40,23 @@ body {
 .large {
   font-size: 15em;
 }
-.inverted {
+.link-inverted {
   &:link,
   &:visited,
   &:hover,
   &:active {
     color: $light-color;
+  }
+}
+footer {
+  bottom: 0px;
+  color: $dark-gray;
+  .footer-above {
+    padding: 50px;
+    background-color: $light-color;
+  }
+  .footer-below {
+    padding: 25px;
+    background-color: $light-gray;
   }
 }
