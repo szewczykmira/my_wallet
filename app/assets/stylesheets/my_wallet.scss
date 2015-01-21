@@ -1,3 +1,35 @@
 // Place all the styles related to the my_wallet controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$light-color: #fdfdfd;
+$dark-gray: #747578;
+$light-gray: #c9c8c6;
+$magneta: #a6004a;
+$default-font: Helvetica;
+
+body {
+  background-color: $light-color;
+  font-family: $default-font;
+  color: $dark-gray;
+}
+.text-magneta {
+  color: $magneta;
+  font-size: 140%;
+}
+.btn-wallet {
+  color: $light-color;
+  background-color: $magneta;
+  &:hover {
+    color: $magneta;
+    background-color: transparent;
+  }
+}
+.session {
+  background-color: $magneta;
+  color: $light-color;
+  font-family: $default-font;
+  padding: 100px;
+}
+.large {
+  font-size: 9em;
+}

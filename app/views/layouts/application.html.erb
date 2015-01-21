@@ -2,11 +2,29 @@
 <html>
 <head>
   <title>MyWallet - pamiętaj gdzie zgubiłeś swoje pieniądze!</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+<%= csrf_meta_tags %>
 </head>
 <body>
+  <nav style='margin-bottom:0px;' class='navbar navbar-default navbar-static-top'>
+    <div class='container'>
+      <p class='navbar-brand'>
+      <span class='text-magneta glyphicon glyphicon-fire '> </span>
+      <span class='text-magneta'> My wallet </span>
+      </p>
+      <div class='navbar-right'>
+        <% if current_user -%>
+          <%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'btn btn-wallet navbar-btn' %>
+        <% else %>
+          <%= link_to 'Sign up', new_registration_path(resource_name), :class => 'btn navbar-btn btn-wallet' %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
 
 <%= yield %>
 
