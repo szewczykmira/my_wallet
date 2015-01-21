@@ -1,37 +1,36 @@
 <header class='session'>
   <div class='container'>
     <div class='row'>
-      <div class='large col-lg-6 col-md-6 col-sm-12 col-xs-12'>
+      <div class='large text-center col-lg-6 col-md-6 col-sm-12 col-xs-12'>
         <i class='glyphicon glyphicon-fire'> </i> 
       </div>
+      <div class='col-lg-4 col-md-4 col-sm-12 col-xs-12'>
+        <h2> Log in </h2>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, :class => 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password %><br />
+            <%= f.password_field :password, autocomplete: "off", :class => 'form-control' %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="form-group">
+              <div class='checkbox'>
+                <%= f.check_box :remember_me %>
+              </div>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Log in", :class => 'btn btn-wallet-inverted btn-lg' %>
+            <%= link_to 'Forgot your password?', new_password_path(resource_name), :class => 'inverted' %>
+          </div>
+        <% end %>
     </div>
   </div>
 </header>
-<div class='container session'>
-<h2>Log</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in", :class => 'btn btn-wallet btn-lg' %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
-</div>

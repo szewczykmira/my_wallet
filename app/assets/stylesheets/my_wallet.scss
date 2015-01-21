@@ -24,12 +24,27 @@ body {
     background-color: transparent;
   }
 }
+.btn-wallet-inverted {
+  color: $magneta;
+  background-color: $light-color;
+  &:hover {
+    color: $light-gray;
+  }
+}
 .session {
   background-color: $magneta;
   color: $light-color;
   font-family: $default-font;
-  padding: 100px;
+  padding: 150px;
 }
 .large {
-  font-size: 9em;
+  font-size: 15em;
+}
+.inverted {
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $light-color;
+  }
 }
