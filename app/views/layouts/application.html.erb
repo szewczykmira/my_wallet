@@ -3,6 +3,7 @@
 <head>
   <title>MyWallet - pamiętaj gdzie zgubiłeś swoje pieniądze!</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+  <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -14,11 +15,19 @@
     <div class='container'>
       <p class='navbar-brand'>
       <span class='text-magneta glyphicon glyphicon-fire '> </span>
-      <span class='text-magneta'> My wallet </span>
+      <%= link_to 'My wallet', root_path, :class =>'text-magneta' %>
       </p>
       <div class='navbar-right'>
         <% if current_user -%>
-          <%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'btn btn-wallet navbar-btn' %>
+          <%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'btn btn-wallet navbar-btn', :style => 'margin-right: 5px' %>
+          <div class='dropdown pull-right'>
+            <button class='btn btn-wallet navbar-btn dropdown-toggle' id='dropdownMenu' data-toggle='dropdown' aria-expanded='true'>
+              <%= current_user.username %> <i class='glyphicon glyphicon-chevron-down'> </i>
+            </button>
+            <ul class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu'>
+              <li role='presentation'><%= link_to 'Edit', edit_registration_path(current_user) %>  </li>
+            </ul>
+          </div>
         <% else %>
           <%= link_to 'Sign up', new_registration_path(resource_name), :class => 'btn navbar-btn btn-wallet' %>
         <% end %>
