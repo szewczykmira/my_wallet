@@ -6,6 +6,8 @@ $dark-gray: #747578;
 $light-gray: #c9c8c6;
 $magneta: #a6004a;
 $default-font: Helvetica;
+$old-blue: #0c6373;
+$blue: #307A88;
 
 body {
   background-color: $light-color;
@@ -16,19 +18,36 @@ body {
   color: $magneta;
   font-size: 140%;
 }
+.wallet-form {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: $dark-gray;
+  background-color: $light-color;
+  background-image: none;
+  border: 1px solid $light-gray;
+  border-radius: 4px;
+  &:focus {
+    border-color: $old-blue;
+    outline:0;
+  }
+}
 .btn-wallet {
   color: $light-color;
-  background-color: $magneta;
+  background-color: $blue;
   &:hover {
-    color: $magneta;
-    background-color: transparent;
+    color: $light-color;
+    background-color: $old-blue;
   }
 }
 .btn-wallet-inverted {
   color: $magneta;
   background-color: $light-color;
   &:hover {
-    color: $light-gray;
+    color: $old-blue;
   }
 }
 .session {
@@ -39,6 +58,16 @@ body {
 }
 .large {
   font-size: 15em;
+}
+.link {
+  &:link,
+  &:visited,
+  &:active {
+    color: $blue,
+  }
+  &:hover {
+    color: $old-blue;
+  }
 }
 .link-inverted {
   &:link,
@@ -54,6 +83,7 @@ footer {
   .footer-above {
     padding: 50px;
     background-color: $light-color;
+    color: $blue;
   }
   .footer-below {
     padding: 25px;
