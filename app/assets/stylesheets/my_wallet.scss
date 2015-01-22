@@ -54,7 +54,7 @@ body {
   background-color: $magneta;
   color: $light-color;
   font-family: $default-font;
-  padding: 150px;
+  padding: 10%;
 }
 .large {
   font-size: 15em;
@@ -78,8 +78,10 @@ body {
   }
 }
 footer {
+  border-top: solid 1px $magneta;
+  margin-top: 34px;
   bottom: 0px;
-  color: $dark-gray;
+  color: $magneta;
   .footer-above {
     padding: 50px;
     background-color: $light-color;
