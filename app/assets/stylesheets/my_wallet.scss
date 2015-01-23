@@ -17,6 +17,10 @@ body {
 .text-magneta {
   color: $magneta;
   font-size: 140%;
+  &:hover {
+    text-decoration: none;
+    color: $magneta;
+  }
 }
 .wallet-form {
   display: block;
@@ -67,6 +71,16 @@ body {
   }
   &:hover {
     color: $old-blue;
+  }
+}
+.link-magneta {
+  color: $magneta;
+  &:link,
+  &:visited,
+  &:active,
+  &:hover {
+    color: $magneta;
+    text-decoration: none;
   }
 }
 .link-inverted {
