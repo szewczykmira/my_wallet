@@ -1,3 +1,11 @@
+class ValidatePersons < ActiveModel::Validator
+  def validate(record)
+    if :creditor_id == :debtor_id
+      record.errors << 'Creditor and debtor are the same person'
+    end
+  end
+end
+
 class Loan < ActiveRecord::Base
   validates :creditor_id, presence: true
   validates :debtor_id, presence: true
@@ -8,10 +16,3 @@ class Loan < ActiveRecord::Base
   belongs_to :debter, :class_name => 'User', :foreign_key => :debtor_id
 end
 
-class ValidatePersons < ActiveModel::Validator
-  def validate(record)
-    if :creditor_id == :debtor_id
-      record.errors << 'Creditor and debtor are the same person'
-    end
-  end
-end
