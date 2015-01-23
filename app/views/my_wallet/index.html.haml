@@ -3,6 +3,11 @@
     .row
       .col-lg-12.col-md-12.col-sm-12.col-xs-12
         .page-header
-          %h1 Długi <i class='glyphicon glyphicon-plus'></i>
-          %h1 Pożyczki <i class='glyphicon glyphicon-plus'></i>
-          %h1 Wydatki <i class='glyphicon glyphicon-plus'></i>
+          %h1 Długi <i class='glyphicon glyphicon-plus pull-right' data-toggle='collapse' href='#addDebt' id='smth' aria-expanded='true' aria-controls='addDebt'></i>
+          .panel-collapse.collapse{:id => 'addDebt',:role => 'tabpanel', "aria-labelledby" => 'smth' }
+            .panel-body
+              Let's se what happen!
+        .page-header
+          %h1 Pożyczki <i class='glyphicon glyphicon-plus pull-right'></i>
+        .page-header
+          %h1 Wydatki <i class='glyphicon glyphicon-plus pull-right'></i>
