@@ -19,13 +19,13 @@
       </p>
       <div class='navbar-right'>
         <% if current_user -%>
-          <%= link_to 'Log out', destroy_user_session_path, :method => :delete, :class => 'btn btn-wallet navbar-btn', :style => 'margin-right: 5px' %>
           <div class='dropdown pull-right'>
             <button class='btn btn-wallet navbar-btn dropdown-toggle' id='dropdownMenu' data-toggle='dropdown' aria-expanded='true'>
               <%= current_user.username %> <i class='glyphicon glyphicon-chevron-down'> </i>
             </button>
             <ul class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu'>
               <li role='presentation'><%= link_to 'Edit', edit_registration_path(current_user) %>  </li>
+              <li role='presentation'><%= link_to 'Log out', destroy_user_session_path, :method => :delete %> </li>
             </ul>
           </div>
         <% else %>

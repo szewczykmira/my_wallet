@@ -13,18 +13,55 @@
                     %ul
                       - @loan.errors.full_messages.each do |msg|
                         %li= msg
-                  .form-group
-                    = f.label :creditor_id
-                    = f.select(:creditor_id, options_from_collection_for_select(User.all, :id, :username) )
-                    = f.label :loan_date
-                    = f.date_select :loan_date, :class => 'form-control'
-                    = f.label :expire_date
-                    = f.date_select :expire_date, :class => 'form-control'
-                    = f.label :sum
-                    = f.text_field :sum
+                  .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                    .form-group
+                      = f.label :creditor_id
+                      %br
+                      = f.select(:creditor_id, options_from_collection_for_select(User.all, :id, :username) )
+                    .form-group
+                      = f.label :loan_date
+                      %br
+                      = f.date_select :loan_date, :class => 'form-control'
+                  .col-lg-6.col-md-6.col-sm-6.col-xs-12
+                    .form-group
+                      = f.label :expire_date
+                      %br
+                      = f.date_select :expire_date, { :class => 'form-control' }
+                    .form-group
+                      = f.label :sum
+                      %br
+                      = f.text_field :sum, :placeholder => 'Suma'
                     = f.hidden_field :debtor_id, :value => current_user.id
                     = f.hidden_field :returned, :value => false
                     = f.hidden_field :accepted, :value => false
+                  .actions
+                    = f.submit 'Dodaj', :class => 'pull-right btn btn-wallet'
+        .table-responsive
+          %table{:class => 'table table-hover' }
+            %thead
+              %th Komu
+              %th Ile
+              %th Kiedy
+              %th Do kiedy
+              %th Zaakceptowane
+              %th Zwrócone
+            %tbody
+              - current_user.debts.each do |debt|
+                %tr
+                  %td= debt.creditor.username
+                  %td= debt.sum
+                  %td= debt.loan_date
+                  %td= debt.expire_date
+                  %td
+                    - if debt.accepted
+                      %i{:class => 'glyphicon link glyphicon-ok'}
+                    - else
+                      %i{:class => 'glyphicon glyphicon-remove link-magneta'}
+                  %td
+                    - if debt.returned
+                      %i{:class => 'glyphicon link glyphicon-ok'}
+                    -else
+                      %i{:class => 'glyphicon glyphicon-remove link-magneta' }
         .page-header
           %h1 Pożyczki <i class='link-magneta glyphicon glyphicon-plus pull-right'></i>
         .page-header
