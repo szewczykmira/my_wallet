@@ -1,0 +1,12 @@
+%tr
+  %td= expense.expense_date
+  %td= expense.how_much
+  %td= expense.for_what
+  %td
+    - if expense.needed
+      %i{ :class => 'glyphicon glyphicon-ok' }
+    -else
+      %i{ :class => 'glyphicon glyphicon-remove' }
+  %td
+    =link_to expense_path(expense), :method => :delete do
+      %i{ :class => 'glyphicon glyphicon-trash link' }

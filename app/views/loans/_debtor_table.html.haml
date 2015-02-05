@@ -1,0 +1,15 @@
+%tr
+  %td= debt.creditor.username
+  %td= debt.sum
+  %td= debt.loan_date
+  %td= debt.expire_date
+  %td
+    - if debt.accepted
+      %i{:class => 'glyphicon glyphicon-ok'}
+    - else
+      %i{:class => 'glyphicon glyphicon-remove'}
+  %td
+    - if debt.returned
+      %i{:class => 'glyphicon glyphicon-ok'}
+    -else
+      %i{:class => 'glyphicon glyphicon-remove' }

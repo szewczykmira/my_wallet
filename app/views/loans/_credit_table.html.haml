@@ -1,0 +1,22 @@
+%tr
+  %td= credit.debter.username
+  %td= credit.sum
+  %td= credit.loan_date
+  %td= credit.expire_date
+  %td
+    - if credit.accepted
+      = link_to accept_loan_path(credit) do
+        %i{ :class => 'glyphicon link glyphicon-ok' }
+    - else 
+      = link_to accept_loan_path(credit) do
+        %i{ :class => 'glyphicon glyphicon-remove link-magneta' }
+  %td
+    - if credit.returned
+      = link_to return_loan_path(credit) do
+        %i{ :class => 'glyphicon link glyphicon-ok' }
+    - else
+      = link_to return_loan_path(credit) do
+        %i{ :class => 'glyphicon link-magneta glyphicon-remove' }
+  %td 
+    = link_to loan_path(credit), :method => :delete do
+      %i{ :class => 'glyphicon link glyphicon-trash' }
