@@ -39,13 +39,12 @@
         .table-responsive
           %table{:class => 'table table-hover' }
             %thead
-              %th Komu
+              %th Od kogo
               %th Ile
               %th Kiedy
               %th Do kiedy
               %th Zaakceptowane
               %th Zwrócone
-              %th
             %tbody
               - current_user.debts.each do |debt|
                 %tr
@@ -55,16 +54,14 @@
                   %td= debt.expire_date
                   %td
                     - if debt.accepted
-                      %i{:class => 'glyphicon link glyphicon-ok'}
+                      %i{:class => 'glyphicon glyphicon-ok'}
                     - else
-                      %i{:class => 'glyphicon glyphicon-remove link-magneta'}
+                      %i{:class => 'glyphicon glyphicon-remove'}
                   %td
                     - if debt.returned
-                      %i{:class => 'glyphicon link glyphicon-ok'}
+                      %i{:class => 'glyphicon glyphicon-ok'}
                     -else
-                      %i{:class => 'glyphicon glyphicon-remove link-magneta' }
-                  %td
-                    %i{:class => 'glyphicon glyphicon-trash link' }
+                      %i{:class => 'glyphicon glyphicon-remove' }
         .page-header
           %h1 Pożyczki <i class='link-magneta glyphicon glyphicon-plus pull-right' data-toggle='collapse' href='#addLoan' id='smth' aria-expanded='true' aria-controls='addDebt'></i>
           .panel-collapse.collapse{:id => 'addLoan', :role => 'tabpanel', "aria-labelledby" => 'smth' }
@@ -102,7 +99,7 @@
         .table-responsive
           %table{:class => 'table table-hover' }
             %thead
-              %th Kto
+              %th Komu
               %th Ile
               %th Kiedy
               %th Do kiedy
@@ -118,14 +115,18 @@
                   %td= credit.expire_date
                   %td
                     - if credit.accepted
-                      %i{:class => 'glyphicon link glyphicon-ok'}
+                      = link_to accept_loan_path(credit) do
+                        %i{:class => 'glyphicon link glyphicon-ok'}
                     - else
-                      %i{:class => 'glyphicon glyphicon-remove link-magneta'}
+                      = link_to accept_loan_path(credit) do
+                        %i{:class => 'glyphicon glyphicon-remove link-magneta'}
                   %td
                     - if credit.returned
-                      %i{:class => 'glyphicon link glyphicon-ok'}
+                      = link_to return_loan_path(credit) do
+                        %i{:class => 'glyphicon link glyphicon-ok'}
                     -else
-                      %i{:class => 'glyphicon glyphicon-remove link-magneta' }
+                      = link_to return_loan_path(credit) do
+                        %i{:class => 'glyphicon glyphicon-remove link-magneta' }
                   %td
                     %i{:class => 'glyphicon glyphicon-trash link' }
         .page-header
@@ -176,8 +177,8 @@
                   %td= expense.for_what
                   %td
                     - if expense.needed
-                      %i{:class => 'glyphicon link glyphicon-ok'}
+                      %i{:class => 'glyphicon glyphicon-ok'}
                     - else
-                      %i{:class => 'glyphicon glyphicon-remove link-magneta'}
+                      %i{:class => 'glyphicon glyphicon-remove'}
                   %td
                     %i{:class => 'glyphicon glyphicon-trash link' }

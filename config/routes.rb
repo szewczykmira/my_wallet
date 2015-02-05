@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   get 'my_wallet/index'
-  resources :loans, :only => [:create]
+  resources :loans, :only => [:create] do
+    member do
+      get 'accept'
+      get 'return'
+    end
+  end
   resources :expense, :only => [:create]
 
   devise_for :users, :controllers => { registrations: 'users/registrations'}

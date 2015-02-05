@@ -11,9 +11,25 @@ class LoansController < ApplicationController
       end
     end
   end
-  def edit
+
+  def accept
+    @loan = Loan.find(params[:id])
+    if @loan.accepted
+      @loan.update_attribute(:accepted, false)
+    else
+      @loan.update_attribute(:accepted, true)
+    end
+    redirect_to root_path
   end
-  def update
+
+  def return
+    @loan = Loan.find(params[:id])
+    if @loan.returned
+      @loan.update_attribute(:returned, false)
+    else
+      @loan.update_attribute(:returned, true)
+    end
+    redirect_to root_path
   end
 
   private
