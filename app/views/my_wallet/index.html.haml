@@ -45,6 +45,7 @@
               %th Do kiedy
               %th Zaakceptowane
               %th Zwrócone
+              %th
             %tbody
               - current_user.debts.each do |debt|
                 %tr
@@ -62,6 +63,8 @@
                       %i{:class => 'glyphicon link glyphicon-ok'}
                     -else
                       %i{:class => 'glyphicon glyphicon-remove link-magneta' }
+                  %td
+                    %i{:class => 'glyphicon glyphicon-trash link' }
         .page-header
           %h1 Pożyczki <i class='link-magneta glyphicon glyphicon-plus pull-right' data-toggle='collapse' href='#addLoan' id='smth' aria-expanded='true' aria-controls='addDebt'></i>
           .panel-collapse.collapse{:id => 'addLoan', :role => 'tabpanel', "aria-labelledby" => 'smth' }
@@ -105,6 +108,7 @@
               %th Do kiedy
               %th Zaakceptowane
               %th Zwrócone
+              %th
             %tbody
               - current_user.credits.each do |credit|
                 %tr
@@ -122,6 +126,8 @@
                       %i{:class => 'glyphicon link glyphicon-ok'}
                     -else
                       %i{:class => 'glyphicon glyphicon-remove link-magneta' }
+                  %td
+                    %i{:class => 'glyphicon glyphicon-trash link' }
         .page-header
           %h1 Wydatki <i class='link-magneta glyphicon glyphicon-plus pull-right' data-toggle='collapse' href='#addExpense' id='smth1' aria-expanded='true' aria-controls='addDebt'></i>
           .panel-collapse.collapse{:id => 'addExpense', :role => 'tabpanel', "aria-labelledby" => 'smth1' }
@@ -161,6 +167,7 @@
               %th Ile
               %th Na co
               %th Czy potrzebne
+              %th
             %tbody
               - current_user.expenses.each do |expense|
                 %tr
@@ -172,3 +179,5 @@
                       %i{:class => 'glyphicon link glyphicon-ok'}
                     - else
                       %i{:class => 'glyphicon glyphicon-remove link-magneta'}
+                  %td
+                    %i{:class => 'glyphicon glyphicon-trash link' }
