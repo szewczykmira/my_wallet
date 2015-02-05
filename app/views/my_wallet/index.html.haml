@@ -7,7 +7,7 @@
           .panel-collapse.collapse{:id => 'addDebt',:role => 'tabpanel', "aria-labelledby" => 'smth' }
             .panel-body
               .col-lg-6.col-md-6.col-sm-9.col-xs-12
-                = render :partial => 'loans/debt_form', :locals => {:loan => @loan}
+                = render :partial => 'loans/debt_form'
         .table-responsive
           %table{:class => 'table table-hover' }
             %thead
@@ -26,35 +26,7 @@
           .panel-collapse.collapse{:id => 'addLoan', :role => 'tabpanel', "aria-labelledby" => 'smth' }
             .panel-body
               .col-lg-6.col-md-6.col-sm-9.col-xs-12
-                = form_for @loan, :url => { :controller => 'loans', :action => 'create' } do |f|
-                  - if @loan.errors.any?
-                    %h2= "#{pluralize(@loan.errors.count, 'error')}"
-                    %ul
-                      - @loan.errors.full_messages.each do |msg|
-                        %li= msg
-                  .col-lg-6.col-md-6.col-sm-6.col-xs-12
-                    .form-group
-                      = f.label :debtor_id
-                      %br
-                      = f.select(:debtor_id, options_from_collection_for_select(User.all, :id, :username) )
-                    .form-group
-                      = f.label :loan_date
-                      %br
-                      = f.date_select :loan_date, :class => 'form-control'
-                  .col-lg-6.col-md-6.col-sm-6.col-xs-12
-                    .form-group
-                      = f.label :expire_date
-                      %br
-                      = f.date_select :expire_date, { :class => 'form-control' }
-                    .form-group
-                      = f.label :sum
-                      %br
-                      = f.text_field :sum, :placeholder => 'Suma'
-                    = f.hidden_field :creditor_id, :value => current_user.id
-                    = f.hidden_field :returned, :value => false
-                    = f.hidden_field :accepted, :value => true
-                  .actions
-                    = f.submit 'Dodaj', :class => 'pull-right btn btn-wallet'
+                = render :partial => 'loans/credit_form'
         .table-responsive
           %table{:class => 'table table-hover' }
             %thead
@@ -73,33 +45,7 @@
           .panel-collapse.collapse{:id => 'addExpense', :role => 'tabpanel', "aria-labelledby" => 'smth1' }
             .panel-body
               .col-lg-6.col-md-6.col-sm-9.col-xs-12
-                = form_for @expense, :url => { :controller => 'expense', :action => 'create' } do |f|
-                  - if @expense.errors.any?
-                    %h2= "#{pluralize(@expense.errors.count, 'error')}"
-                    %ul
-                      - @expense.errors.full_messages.each do |msg|
-                        %li= msg
-                  .col-lg-6.col-md-6.col-sm-6.col-xs-12
-                    .form-group
-                      = f.label :expense_date
-                      %br
-                      = f.date_select :expense_date, :class => 'form-control'
-                    .form-group
-                      = f.label :needed
-                      %br
-                      = f.check_box :needed
-                  .col-lg-6.col-md-6.col-sm-6.col-xs-12
-                    .form-group
-                      = f.label :how_much
-                      %br
-                      = f.text_field :how_much, :placeholder => 'Suma'
-                    .form-group
-                      = f.label :for_what
-                      %br
-                      = f.text_field :for_what, :placeholder => 'Na co wdałeś te pieniądze'
-                    = f.hidden_field :user_id, :value => current_user.id
-                  .actions
-                    = f.submit 'Dodaj', :class => 'pull-right btn btn-wallet'
+                = render :partial => 'expense/expense_form'
         .table-responsive
           %table{:class => 'table table-hover' }
             %thead
