@@ -1,4 +1,5 @@
 class LoansController < ApplicationController
+  before_action :set_loan, only: [:accept, :return, :destroy]
   def create
     @loan = Loan.new(loan_params)
     respond_to do |format|
@@ -13,7 +14,6 @@ class LoansController < ApplicationController
   end
 
   def accept
-    @loan = Loan.find(params[:id])
     if @loan.accepted
       @loan.update_attribute(:accepted, false)
     else
@@ -23,7 +23,6 @@ class LoansController < ApplicationController
   end
 
   def return
-    @loan = Loan.find(params[:id])
     if @loan.returned
       @loan.update_attribute(:returned, false)
     else
@@ -32,7 +31,16 @@ class LoansController < ApplicationController
     redirect_to root_path
   end
 
+  def destroy
+    @loan.destroy
+    redirect_to root_path
+  end
+
   private
+  def set_loan
+    @loan = Loan.find(params[:id])
+  end
+
   def loan_params
     params.require(:loan).permit(:creditor_id, :debtor_id, :loan_date, :expire_date, :accepted, :sum, :returned)
   end
