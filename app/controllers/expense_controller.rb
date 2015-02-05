@@ -11,6 +11,11 @@ class ExpenseController < ApplicationController
       end
     end
   end
+  def destroy
+    @expense = Expense.find(params[:id])
+    @expense.destroy
+    redirect_to root_path
+  end
   private
   def expense_params
     params.require(:expense).permit(:user_id, :for_what, :how_much, :needed, :expense_date)

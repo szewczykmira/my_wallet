@@ -182,4 +182,5 @@
                     - else
                       %i{:class => 'glyphicon glyphicon-remove'}
                   %td
-                    %i{:class => 'glyphicon glyphicon-trash link' }
+                    = link_to expense_path(expense), :method => :delete do
+                      %i{:class => 'glyphicon glyphicon-trash link' }
