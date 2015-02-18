@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class ExpenseControllerTest < ActionController::TestCase
+  setup do 
+    @expense = expenses(:one)
+  end
+ 
   test 'should create expense' do
     assert_difference('Expense.count') do
       post :create, expense: { user_id: 1, for_what: 'Nothing', how_much: 23.34, needed: false}
