@@ -1,4 +1,5 @@
 class ValidatePersons < ActiveModel::Validator
+  # Custom validation - check if debtor is not creditor
   def validate(record)
     if record.creditor_id == record.debtor_id
       record.errors[:base] << 'Creditor and debtor are the same person'
@@ -7,6 +8,7 @@ class ValidatePersons < ActiveModel::Validator
 end
 
 class Loan < ActiveRecord::Base
+  # Model for loans. Loans are associated with users. 
   validates :creditor_id, presence: true
   validates :debtor_id, presence: true
   validates :sum, presence: true

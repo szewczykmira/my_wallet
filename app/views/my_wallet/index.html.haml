@@ -47,7 +47,7 @@
               .col-lg-6.col-md-6.col-sm-9.col-xs-12
                 = render :partial => 'expense/expense_form'
         .table-responsive
-          %table{:class => 'table table-hover' }
+          %table{:id => 'ExpenseTable',:class => 'table table-hover' }
             %thead
               %th Kiedy
               %th Ile
