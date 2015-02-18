@@ -8,7 +8,7 @@ class ValidatePersons < ActiveModel::Validator
 end
 
 class Loan < ActiveRecord::Base
-  # Model for loans. Loans are associated with users. 
+  # Model for loans. Loans are associated with users.
   validates :creditor_id, presence: true
   validates :debtor_id, presence: true
   validates :sum, presence: true
