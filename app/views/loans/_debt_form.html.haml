@@ -8,20 +8,20 @@
     .form-group
       = f.label :creditor_id
       %br
-      = f.select(:creditor_id, options_from_collection_for_select(User.all, :id, :username) )
+      = f.select(:creditor_id, options_from_collection_for_select(User.all, :id, :username),{}, {:class => "form-control"} )
     .form-group
       = f.label :loan_date
       %br
-      = f.date_select :loan_date, :class => 'form-control'
+      = f.date_select(:loan_date, {}, {:class => "form-control"})
   .col-lg-6.col-md-6.col-sm-6.col-xs-12
     .form-group
       = f.label :expire_date
       %br
-      = f.date_select :expire_date, { :class => 'form-control' }
+      = f.date_select(:expire_date, {}, { :class => 'form-control' })
     .form-group
       = f.label :sum
       %br
-      = f.text_field :sum, :placeholder => 'Suma'
+      = f.text_field( :sum, {:placeholder => 'Suma', :class => 'form-control'}) 
       = f.hidden_field :debtor_id, :value => current_user.id
       = f.hidden_field :returned, :value => false
       = f.hidden_field :accepted, :value => false
