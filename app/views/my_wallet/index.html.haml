@@ -18,8 +18,12 @@
               %th Zaakceptowane
               %th Zwrócone
             %tbody
-              - current_user.debts.each do |debt|
-                = render :partial => 'loans/debtor_table', :locals => { :debt => debt }
+              - if not current_user.debts.empty?
+                - current_user.debts.each do |debt|
+                  = render :partial => 'loans/debtor_table', :locals => { :debt => debt }
+              - else
+                %tr
+                  %td{:colspan => '6'} No data!
 
         .page-header
           %h1 Pożyczki <i class='link-magneta glyphicon glyphicon-plus pull-right' data-toggle='collapse' href='#addLoan' id='smth' aria-expanded='true' aria-controls='addDebt'></i>
@@ -38,8 +42,12 @@
               %th Zwrócone
               %th
             %tbody
-              - current_user.credits.each do |credit|
-                = render :partial => 'loans/credit_table', :locals => { :credit => credit }
+              - if not current_user.credits.empty?
+                - current_user.credits.each do |credit|
+                  = render :partial => 'loans/credit_table', :locals => { :credit => credit }
+              - else
+                %tr
+                  %td{:colspan => 6} No data!
         .page-header
           %h1 Wydatki <i class='link-magneta glyphicon glyphicon-plus pull-right' data-toggle='collapse' href='#addExpense' id='smth1' aria-expanded='true' aria-controls='addDebt'></i>
           .panel-collapse.collapse{:id => 'addExpense', :role => 'tabpanel', "aria-labelledby" => 'smth1' }
@@ -55,5 +63,9 @@
               %th Czy potrzebne
               %th
             %tbody
-              - current_user.expenses.each do |expense|
-                = render :partial => 'expense/table', :locals => { :expense => expense }
+              - if not current_user.expenses.empty?
+                - current_user.expenses.each do |expense|
+                  = render :partial => 'expense/table', :locals => { :expense => expense }
+              - else 
+                %tr
+                  %td{:colspan => "5"} No data!
