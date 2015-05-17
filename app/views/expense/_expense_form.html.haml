@@ -22,7 +22,6 @@
       = f.label :for_what
       %br
       = f.text_field( :for_what, {:placeholder => 'Na co wdałeś te pieniądze', :class => 'form-control'} )
-    = f.hidden_field :user_id, :value => current_user.id
   .actions
     = f.submit 'Dodaj', :class => 'pull-right btn btn-wallet'
 
