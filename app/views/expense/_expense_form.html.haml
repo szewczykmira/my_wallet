@@ -8,7 +8,7 @@
     .form-group
       = f.label :expense_date
       %br
-      = f.date_select :expense_date, :class => 'form-control'
+      = f.date_select(:expense_date, {}, :class => 'form-control')
     .form-group
       = f.label :needed
       %br
@@ -17,11 +17,11 @@
     .form-group
       = f.label :how_much
       %br
-      = f.text_field :how_much, :placeholder => 'Suma'
+      = f.text_field( :how_much, {:placeholder => 'Suma', :class => 'form-control'})
     .form-group
       = f.label :for_what
       %br
-      = f.text_field :for_what, :placeholder => 'Na co wdałeś te pieniądze'
+      = f.text_field( :for_what, {:placeholder => 'Na co wdałeś te pieniądze', :class => 'form-control'} )
     = f.hidden_field :user_id, :value => current_user.id
   .actions
     = f.submit 'Dodaj', :class => 'pull-right btn btn-wallet'
