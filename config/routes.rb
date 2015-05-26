@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'my_wallet/index'
-  resources :loans, :only => [:create, :destroy] do
+  post '/loans/create_whom', to: 'loans#create_whom'
+  post '/loans/create_from', to: 'loans#create_from'
+  resources :loans, :only => [:destroy] do
     member do
       get 'accept'
       get 'return'

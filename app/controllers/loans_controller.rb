@@ -1,11 +1,30 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: [:accept, :return, :destroy]
-  def create
+  def create_from
     @loan = Loan.new(loan_params)
+    @loan.creditor_id = current_user.id
+    @loan.returned = false
+    @loan.accepted = true
     respond_to do |format|
       if @loan.save
         format.html { redirect_to root_path }
         format.json { render 'my_wallet/index', status: :created }
+      else
+        format.html { render 'my_wallet/index' }
+        format.json { render json: @loan.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def create_whom
+    @loan = Loan.new(loan_params)
+    @loan.debtor_id = current_user.id
+    @loan.returned = false
+    @loan.accepted = false
+    respond_to do |format|
+      if @loan.save
+        format.json { redirect_to root_path }
+        format.html { render 'my_wallet/index', status: :created }
       else
         format.html { render 'my_wallet/index' }
         format.json { render json: @loan.errors, status: :unprocessable_entity }

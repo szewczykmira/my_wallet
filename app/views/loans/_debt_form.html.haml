@@ -1,4 +1,4 @@
-= form_for @loan, :url => { :controller => 'loans', :action => 'create' } do |f|
+= form_for @loan, :url => { :controller => 'loans', :action => 'create_whom' } do |f|
   - if @loan.errors.any?
     %h2= "#{pluralize(@loan.errors.count, 'error')}"
     %ul
@@ -22,9 +22,6 @@
       = f.label :sum
       %br
       = f.text_field( :sum, {:placeholder => 'Suma', :class => 'form-control'}) 
-      = f.hidden_field :debtor_id, :value => current_user.id
-      = f.hidden_field :returned, :value => false
-      = f.hidden_field :accepted, :value => false
     .actions
       = f.submit 'Dodaj', :class => 'pull-right btn btn-wallet'
 
