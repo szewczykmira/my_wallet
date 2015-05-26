@@ -23,8 +23,8 @@ class LoansController < ApplicationController
     @loan.accepted = false
     respond_to do |format|
       if @loan.save
-        format.json { redirect_to root_path }
-        format.html { render 'my_wallet/index', status: :created }
+        format.html { redirect_to root_path }
+        format.json { render 'my_wallet/index', status: :created }
       else
         format.html { render 'my_wallet/index' }
         format.json { render json: @loan.errors, status: :unprocessable_entity }
