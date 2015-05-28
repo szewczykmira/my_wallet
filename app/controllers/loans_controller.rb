@@ -11,6 +11,7 @@ class LoansController < ApplicationController
         format.json { render 'my_wallet/index', status: :created }
       else
         format.html { render 'my_wallet/index' }
+        @expense = Expense.new
         format.json { render json: @loan.errors, status: :unprocessable_entity }
       end
     end
@@ -27,6 +28,7 @@ class LoansController < ApplicationController
         format.json { render 'my_wallet/index', status: :created }
       else
         format.html { render 'my_wallet/index' }
+        @expense = Expense.new
         format.json { render json: @loan.errors, status: :unprocessable_entity }
       end
     end

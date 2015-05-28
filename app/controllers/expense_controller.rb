@@ -7,6 +7,7 @@ class ExpenseController < ApplicationController
         format.html { redirect_to root_path }
         format.json { render 'my_wallet/index', status: :created }
       else
+        @loan = Loan.new
         format.html { render 'my_wallet/index' }
         format.json { render json: @expense.errors, status: :unprocessable_entity }
       end
