@@ -4,8 +4,7 @@ class ExpenseController < ApplicationController
     @expense.user_id = current_user.id
     respond_to do |format|
       if @expense.save
-        format.html { redirect_to root_path }
-        format.json { render 'my_wallet/index', status: :created }
+        format.js 
       else
         @loan = Loan.new
         format.html { render 'my_wallet/index' }
@@ -16,7 +15,6 @@ class ExpenseController < ApplicationController
   def destroy
     @expense = Expense.find(params[:id])
     @expense.destroy
-    redirect_to root_path
   end
   private
   def expense_params

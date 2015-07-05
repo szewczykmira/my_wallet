@@ -1,4 +1,4 @@
-%tr
+%tr{:id => "exp-#{expense.id}"}
   %td= expense.expense_date
   %td= expense.how_much
   %td= expense.for_what
@@ -8,5 +8,5 @@
     -else
       %i{ :class => 'glyphicon glyphicon-remove' }
   %td
-    =link_to expense_path(expense), :method => :delete do
+    =link_to expense_path(expense),remote: true, :method => :delete do
       %i{ :class => 'glyphicon glyphicon-trash link' }
