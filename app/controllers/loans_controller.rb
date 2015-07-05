@@ -39,7 +39,6 @@ class LoansController < ApplicationController
     else
       @loan.update_attribute(:accepted, true)
     end
-    redirect_to root_path
   end
 
   def return
@@ -48,7 +47,6 @@ class LoansController < ApplicationController
     else
       @loan.update_attribute(:returned, true)
     end
-    redirect_to root_path
   end
 
   def destroy

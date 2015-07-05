@@ -1,0 +1,2 @@
+$('#c<%= @loan.id %>').replaceWith("<%= escape_javascript(render :partial => 'loans/credit_table', :locals => { :credit => @loan }) %>");
+
