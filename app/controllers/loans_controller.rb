@@ -54,6 +54,9 @@ class LoansController < ApplicationController
   def destroy
     @id = @loan.id
     @loan.destroy
+    respond_to do |format|
+      format.js
+    end
   end
 
   private
