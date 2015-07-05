@@ -1,5 +1,6 @@
 class LoansController < ApplicationController
   before_action :set_loan, only: [:accept, :return, :destroy]
+  respond_to :html, :js
   def create_from
     @loan = Loan.new(loan_params)
     @loan.creditor_id = current_user.id
@@ -7,8 +8,7 @@ class LoansController < ApplicationController
     @loan.accepted = true
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to root_path }
-        format.json { render 'my_wallet/index', status: :created }
+        format.js
       else
         format.html { render 'my_wallet/index' }
         @expense = Expense.new
@@ -24,8 +24,7 @@ class LoansController < ApplicationController
     @loan.accepted = false
     respond_to do |format|
       if @loan.save
-        format.html { redirect_to root_path }
-        format.json { render 'my_wallet/index', status: :created }
+        format.js
       else
         format.html { render 'my_wallet/index' }
         @expense = Expense.new
@@ -53,8 +52,8 @@ class LoansController < ApplicationController
   end
 
   def destroy
+    @id = @loan.id
     @loan.destroy
-    redirect_to root_path
   end
 
   private

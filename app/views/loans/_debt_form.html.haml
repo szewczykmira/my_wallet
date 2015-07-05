@@ -1,4 +1,4 @@
-= form_for @loan, :url => { :controller => 'loans', :action => 'create_whom' } do |f|
+= form_for @loan,remote: true, :url => { :controller => 'loans', :action => 'create_whom' } do |f|
   - if @loan.errors.any?
     %h2= "#{pluralize(@loan.errors.count, 'error')}"
     %ul
