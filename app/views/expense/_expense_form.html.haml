@@ -1,9 +1,5 @@
 = form_for @expense,remote: true, :url => { :controller => 'expense', :action => 'create' } do |f|
-  - if @expense.errors.any?
-    %h2= "#{pluralize(@loan.errors.count, 'error')}"
-    %ul
-      - @loan.errors.full_messages.each do |msg|
-        %li= msg
+  .errors_expense
   .col-lg-6.col-md-6.col-sm-6.col-xs-12
     .form-group
       = f.label :expense_date

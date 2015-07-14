@@ -1,1 +1,12 @@
-$("#ExpenseTable").append("<%= escape_javascript(render :partial => 'expense/table', :locals => { :expense => @expense }) %>");
+$('.errors_expense').empty();
+<% if not @expense.errors.any? %>
+  $("#ExpenseTable").append("<%= escape_javascript(render :partial => 'expense/table', :locals => { :expense => @expense }) %>");
+<% else %>
+  var errors = '<ul>';
+  <% @expense.errors.full_messages.each do |error| %>
+    errors += '<li>' + '<%= escape_javascript(error) %>' + '</li>';
+  <% end %>
+  errors += '</ul>';
+  console.log(errors);
+  $('.errors_expense').append(errors);
+<% end %>

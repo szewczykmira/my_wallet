@@ -6,9 +6,7 @@ class ExpenseController < ApplicationController
       if @expense.save
         format.js 
       else
-        @loan = Loan.new
-        format.html { render 'my_wallet/index' }
-        format.json { render json: @expense.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
