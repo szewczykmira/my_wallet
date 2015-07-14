@@ -8,10 +8,8 @@ class LoansController < ApplicationController
     @loan.accepted = true
     respond_to do |format|
       if @loan.save
-        @saved = true
         format.js
       else
-        @saved = false
         format.js
       end
     end
