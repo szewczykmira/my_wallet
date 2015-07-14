@@ -24,9 +24,7 @@ class LoansController < ApplicationController
       if @loan.save
         format.js
       else
-        format.html { render 'my_wallet/index' }
-        @expense = Expense.new
-        format.json { render json: @loan.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

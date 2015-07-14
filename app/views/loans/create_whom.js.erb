@@ -1,1 +1,12 @@
-$("#debts").append("<%= escape_javascript(render :partial => 'loans/debtor_table', :locals => { :debt => @loan }) %>");
+$('.errors_debts').empty();
+<% if not @loan.errors.any? %>
+  $("#debts").append("<%= escape_javascript(render :partial => 'loans/debtor_table', :locals => { :debt => @loan }) %>");
+<% else %>
+  var errors = '<ul>';
+  <% @loan.errors.full_messages.each do |error| %>
+    errors += '<li>' + '<%= escape_javascript(error) %>' + '</li>';
+  <% end %>
+  errors += '</ul>';
+  console.log(errors);
+  $('.errors_debts').append(errors);
+<% end %>
