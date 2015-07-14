@@ -8,11 +8,11 @@ class LoansController < ApplicationController
     @loan.accepted = true
     respond_to do |format|
       if @loan.save
+        @saved = true
         format.js
       else
-        format.html { render 'my_wallet/index' }
-        @expense = Expense.new
-        format.json { render json: @loan.errors, status: :unprocessable_entity }
+        @saved = false
+        format.js
       end
     end
   end

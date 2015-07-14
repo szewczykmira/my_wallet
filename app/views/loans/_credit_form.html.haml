@@ -1,9 +1,6 @@
 = form_for @loan, remote: true, :url => { :controller => 'loans', :action => 'create_from' } do |f|
-  - if @loan.errors.any?
-    %h2= "#{pluralize(@loan.errors.count, 'error')}"
-    %ul
-      - @loan.errors.full_messages.each do |msg|
-        %li= msg
+  .errors
+    Dupa dupa cycki
   .col-lg-6.col-md-6.col-sm-6.col-xs-12
     .form-group
       = f.label :debtor_id
